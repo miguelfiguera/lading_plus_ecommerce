@@ -1,3 +1,15 @@
+# Dependencies
+1. Prisma
+2. Typescript
+
+
+
+
+
+
+# Notes
+
+
 Template "Landing + ecommerce"
 Pagina web con base de datos, avisos por correo y gestion admin para crear, modificar, leer y desactivar productos.
 

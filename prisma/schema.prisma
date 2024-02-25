@@ -22,19 +22,22 @@ model User {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   lastSession DateTime?
-  role Role @default(User)
+  role        Role      @default(User)
   Cart        Cart[]
   profile     Profile?
- // posts       Post[]
+  // posts       Post[]
 }
- 
-model Profile{
-  id Int @id @default(autoincrement())
-  user User @relation(fields:[userId],references:[id])
-  userId String @unique
-  name String @db.VarChar(50)
-  lastName String @db.VarChar(50)
-  address String
+
+model Profile {
+  id          Int      @id @default(autoincrement())
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String   @unique
+  name        String   @db.VarChar(50)
+  lastName    String   @db.VarChar(50)
+  address     String
+  coordinates String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model Product {
@@ -47,29 +50,32 @@ model Product {
   photoUrl    String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  carts        Cart[]
-  bills Bill[]
+  carts       Cart[]
+  bills       Bill[]
 }
 
 model Cart {
-  id       Int       @id @default(autoincrement())
-  products Product[]
-  user     User      @relation(fields: [userId], references: [id])
-  userId   String
+  id        Int       @id @default(autoincrement())
+  products  Product[]
+  user      User      @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
-model Bill{
-  id Int @id @default(autoincrement())
-  userEmail String
-  products Product[]
-  amount Int
+model Bill {
+  id            Int           @id @default(autoincrement())
+  userEmail     String
+  products      Product[]
+  amount        Int
   clientAddress String?
-  coordinates String?
+  coordinates   String?
   paymentMethod PaymentMethod @default(cashUSD)
-  paymentData Json
-  confirmed Boolean @default(false)
+  paymentData   Json
+  confirmed     Boolean       @default(false)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
 }
-
 
 //model Post{
 //id Int @id @default(autoincrement())
@@ -79,16 +85,13 @@ model Bill{
 //authorId String
 //}
 
-
-
-
-enum PaymentMethod{
+enum PaymentMethod {
   PAYPAL
   PAGOMOVIL
   cashUSD
 }
 
-enum Role{
+enum Role {
   Root
   Admin
   User

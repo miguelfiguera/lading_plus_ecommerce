@@ -18,9 +18,23 @@ model User {
   id          String    @id @default(uuid())
   userName    String    @unique
   email       String    @unique
+  password    String
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   lastSession DateTime?
+  role Role @default(User)
+  Cart        Cart[]
+  profile     Profile?
+ // posts       Post[]
+}
+ 
+model Profile{
+  id Int @id @default(autoincrement())
+  user User @relation(fields:[userId],references:[id])
+  userId String @unique
+  name String @db.VarChar(50)
+  lastName String @db.VarChar(50)
+  address String
 }
 
 model Product {
@@ -33,4 +47,49 @@ model Product {
   photoUrl    String?
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  carts        Cart[]
+  bills Bill[]
+}
+
+model Cart {
+  id       Int       @id @default(autoincrement())
+  products Product[]
+  user     User      @relation(fields: [userId], references: [id])
+  userId   String
+}
+
+model Bill{
+  id Int @id @default(autoincrement())
+  userEmail String
+  products Product[]
+  amount Int
+  clientAddress String?
+  coordinates String?
+  paymentMethod PaymentMethod @default(cashUSD)
+  paymentData Json
+  confirmed Boolean @default(false)
+}
+
+
+//model Post{
+//id Int @id @default(autoincrement())
+//title String
+//body String
+//author User @relation(fields:[authorId],references:[id])
+//authorId String
+//}
+
+
+
+
+enum PaymentMethod{
+  PAYPAL
+  PAGOMOVIL
+  cashUSD
+}
+
+enum Role{
+  Root
+  Admin
+  User
 }

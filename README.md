@@ -1,7 +1,11 @@
 # Dependencies
 1. Prisma
 2. Typescript
-
+3. bcrypt
+4. nextAuth/auth.js
+5. toastify || react-hot-toast
+6. Bootstrap
+7. Faker-js for seeding database.
 
 
 

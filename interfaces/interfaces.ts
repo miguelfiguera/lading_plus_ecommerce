@@ -1,14 +1,14 @@
 export interface User{
-    id: string
+    id?: string
     userName:string
     email:string
     password:string
     createdAt: Date
     updatedAt: Date
     lastSession?: Date
-    role: Role
-    cart:Cart
-    profile: Profile
+    role: Role 
+    cart?:Cart
+    profile?: Profile
 }
 
 
@@ -64,7 +64,7 @@ enum PaymentMethod{
   }
 
   enum Role{
-    Root,
-    Admin,
-    User
+    ROOT,
+    ADMIN,
+    USER
 }

@@ -6,7 +6,7 @@ import placeHolderPhoto from '@/public/OIG2.jpeg'
 
 export default function Hero() {
 
-  const letterColor = "#DADADA";
+  const letterColor = "black";
 
   let backgroundStyle = {
     background:
@@ -16,7 +16,9 @@ export default function Hero() {
   //tipografia banhaus para debajo del logo "Tu escuela online y a domicilio."
 
   return (
-    <div className="page-header mb-0 pb-4" style={backgroundStyle}>
+    <div className="page-header mb-0 pb-4 border-bottom"
+     //style={backgroundStyle}
+     >
       <div className="text-center pb-5 pt-5">
         <Image
           src={placeHolderPhoto}
@@ -31,7 +33,7 @@ export default function Hero() {
             translate: "0% 50%",
           }}
         >
-          Lorem Ipsum
+          Your Name Here
         </h1>
       </div>
     </div>

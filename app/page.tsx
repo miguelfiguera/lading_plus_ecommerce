@@ -1,8 +1,14 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
+import Faq from "@/components/landingComponents/Faq";
+import Carousel from "@/components/landingComponents/Carousel";
+import AboutUsRows from "@/components/landingComponents/AboutUsRows";
 export default function Home() {
   return (
- <div> Im so handsome</div>
+ <div className="container"> 
+<AboutUsRows />
+<Carousel/>
+<Faq/>
+
+
+ </div>
   );
 }

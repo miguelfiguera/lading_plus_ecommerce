@@ -9,6 +9,8 @@ export interface User{
     role: Role 
     cart?:Cart
     profile?: Profile
+    gender?: Gender
+    age?: Number
 }
 
 
@@ -68,3 +70,9 @@ enum PaymentMethod{
     ADMIN,
     USER
 }
+
+enum Gender {
+    MALE,
+    FEMALE,
+    OTHER
+  }

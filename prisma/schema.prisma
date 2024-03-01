@@ -26,6 +26,7 @@ model User {
   cart        Cart?
   profile     Profile?
   // posts       Post[]
+  //comments       Comment[]
 }
 
 model Profile {
@@ -35,6 +36,8 @@ model Profile {
   name        String   @db.VarChar(50)
   lastName    String   @db.VarChar(50)
   phoneNumber String?  @db.VarChar(15)
+  age         Int?
+  gender      Gender?
   address     String
   coordinates String
   createdAt   DateTime @default(now())
@@ -86,6 +89,16 @@ model Bill {
 //authorId String
 //}
 
+//model Comment{
+//id Int @id @default(autoincrement())
+//title String
+//body String
+//author User @relation(fields:[authorId],references:[id])
+//authorId String
+//post Post  @relation(fields:[postId],references:[id])
+//postId Int
+//}
+
 enum PaymentMethod {
   PAYPAL
   PAGOMOVIL
@@ -96,4 +109,10 @@ enum Role {
   ROOT
   ADMIN
   USER
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
 }

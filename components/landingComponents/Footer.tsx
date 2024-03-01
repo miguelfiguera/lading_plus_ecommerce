@@ -4,7 +4,7 @@ export default function Footer() {
   const paragraphStyles = {
     fontSize: "14px",
     fontWeight: "300",
-    color: "black",
+   // color: "black",
     maxWidth: "70%",
   };
 
@@ -28,7 +28,7 @@ export default function Footer() {
   };
 
   const otherColor={
-    color:"black"
+    color:"#DADADA"
   }
 
   return (
@@ -45,7 +45,7 @@ export default function Footer() {
         <div className="container d-md-flex flex-row  align-items-start justify-content-center">
           <div className="row">
             <div className="col-md " style={{ marginTop: "20px" }}>
-              <h5 className="text-black mb-5">Lorem Ipsum Dolor</h5>
+              <h5 className=" mb-5">Lorem Ipsum Dolor</h5>
               <p style={paragraphStyles} className="">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Praesent ultricies mollis ipsum, vitae rutrum augue dictum et.
@@ -53,7 +53,7 @@ export default function Footer() {
               </p>
             </div>
             <div className="col-md" style={{ marginTop: "20px" }}>
-              <h5 className="text-black mb-5">Del Pirata</h5>
+              <h5 className=" mb-5">Del Pirata</h5>
               <p style={paragraphStyles} className="">
                 con diez canhones por banda, viento en popa a toda vela, no
                 corta el mar sino vuela, un velero bergantin.
@@ -73,7 +73,7 @@ export default function Footer() {
               </p>
             </div>
             <div className="col-md" style={{ marginTop: "20px" }}>
-              <h5 className="text-black mb-5">Los heroes de marvel:</h5>
+              <h5 className=" mb-5">Los heroes de marvel:</h5>
               <ul style={ulStytiles}>
                 <li style={theLiStyles}>Deadpool</li>
                 <li style={theLiStyles}>Spiderman</li>

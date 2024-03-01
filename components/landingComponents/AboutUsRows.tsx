@@ -10,7 +10,7 @@ export default function AboutUsRows() {
       <h1 className="text-center fs-3"> Product / Services</h1>
       <p className="fs-5 text-center">Small description</p>
       <div className="row">
-        <div className="col my-4 mx-0 shadow-lg py-4 rounded-3">
+        <div className="col-md my-4 mx-0 shadow-lg py-4 rounded-3">
           {" "}
           <h2>Product 1</h2>
           <p>
@@ -30,7 +30,7 @@ export default function AboutUsRows() {
         </div>
       </div>
       <div className="row">
-        <div className="col my-4 mx-0 shadow-lg py-4 rounded-3">
+        <div className="col-md-4 order-last order-md-0 my-4 mx-0 shadow-lg py-4 rounded-3">
           <Image
             src={product2}
             alt="Product 2"
@@ -51,7 +51,7 @@ export default function AboutUsRows() {
         </div>
       </div>
       <div className="row">
-        <div className="col my-4 mx-0 shadow-lg py-4 rounded-3">
+        <div className="col-md my-4 mx-0 shadow-lg py-4 rounded-3">
           {" "}
           <h2>Product 3</h2>
           <p>

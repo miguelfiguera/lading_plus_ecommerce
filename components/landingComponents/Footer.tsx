@@ -44,7 +44,7 @@ export default function Footer() {
       <div className="container ">
         <div className="container d-md-flex flex-row  align-items-start justify-content-center">
           <div className="row">
-            <div className="col " style={{ marginTop: "20px" }}>
+            <div className="col-md " style={{ marginTop: "20px" }}>
               <h5 className="text-black mb-5">Lorem Ipsum Dolor</h5>
               <p style={paragraphStyles} className="">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -52,7 +52,7 @@ export default function Footer() {
                 Fusce ut metus quis purus sodales tincidunt.
               </p>
             </div>
-            <div className="col" style={{ marginTop: "20px" }}>
+            <div className="col-md" style={{ marginTop: "20px" }}>
               <h5 className="text-black mb-5">Del Pirata</h5>
               <p style={paragraphStyles} className="">
                 con diez canhones por banda, viento en popa a toda vela, no
@@ -72,7 +72,7 @@ export default function Footer() {
                 <br />
               </p>
             </div>
-            <div className="col" style={{ marginTop: "20px" }}>
+            <div className="col-md" style={{ marginTop: "20px" }}>
               <h5 className="text-black mb-5">Los heroes de marvel:</h5>
               <ul style={ulStytiles}>
                 <li style={theLiStyles}>Deadpool</li>
@@ -83,7 +83,7 @@ export default function Footer() {
                 <li style={theLiStyles}>Ironman</li>
               </ul>
             </div>
-            <div className="col" style={{ marginTop: "20px" }}>
+            <div className="col-md" style={{ marginTop: "20px" }}>
               <h5 className="mx-2 mb-4">Nuestras redes:</h5>
               <button
                 className="mx-2 my-2 my-footer-buttons "

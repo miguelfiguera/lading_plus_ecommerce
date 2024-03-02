@@ -33,10 +33,5 @@ export async function POST(req: NextRequest) {
     }
  }
 
-
-
-
-
-
-return NextResponse.json({ message: "Success" },{status:200});
+return NextResponse.json({ message: "Your account has been created. Welcome!" },{status:200});
 }

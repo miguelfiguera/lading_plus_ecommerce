@@ -1,16 +1,15 @@
+// model interfaces
 export interface User{
     id?: string
     userName:string
     email:string
     password:string
-    createdAt: Date
-    updatedAt: Date
+    createdAt?: Date
+    updatedAt?: Date
     lastSession?: Date
-    role: Role 
+    role?: Role 
     cart?:Cart
     profile?: Profile
-    gender?: Gender
-    age?: Number
 }
 
 
@@ -53,6 +52,8 @@ export interface Profile{
     id:Number
     user:User
     userId:string
+    gender?: Gender
+    age?: Number
     name:string
     lastName:string
     address:string
@@ -75,4 +76,12 @@ enum Gender {
     MALE,
     FEMALE,
     OTHER
+  }
+
+
+  // userForm Interfaces
+
+  export interface userForm{
+    type:'edit' | 'create'
+    user?:'string'
   }

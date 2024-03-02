@@ -1,12 +1,10 @@
 import NextAuth from "next-auth"
-import GitHub from "@auth/core/providers/github"
-import Credentials from "@auth/core/providers/credentials"
-import Google from "@auth/core/providers/google"
-
+import GitHub from "next-auth/providers/github"
+import credentials from "next-auth/providers/credentials"
 
 export const {
   handlers: { GET, POST },
   auth,
 } = NextAuth({
-  providers: [GitHub,Credentials,Google],
+  providers: [GitHub,credentials],
 })

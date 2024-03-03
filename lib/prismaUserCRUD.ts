@@ -32,19 +32,24 @@ export async function registerNewUser(user: User) {
 
         newUser.password = "";
 
-        return NextResponse.json(
+ /*        return NextResponse.json(
             { message: "User created", user: newUser },
             { status: 201 }
-        );
+        ); */
+        return newUser
     } catch (error) {
         if (error instanceof Error) {
             console.error("Error creating user:", error.message);
             throw new Error("User registration failed.");
         }
 
-        return NextResponse.json(
+/*         return NextResponse.json(
             { message: "User registration failed." },
             { status: 500 }
-        );
+        ); */
+
+        throw new Error("User registration failed.");
     }
 }
+
+export async function updateUser(){}

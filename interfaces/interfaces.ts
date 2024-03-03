@@ -10,6 +10,8 @@ export interface User{
     role?: Role 
     cart?:Cart
     profile?: Profile
+    termsAndConditions: true
+    privacyPolicy:      true
 }
 
 
@@ -82,6 +84,6 @@ enum Gender {
   // userForm Interfaces
 
   export interface userForm{
-    type:'edit' | 'create'
+    type:'editUser' | 'createUser'
     user?:'string'
   }

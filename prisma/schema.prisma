@@ -15,16 +15,18 @@ datasource db {
 }
 
 model User {
-  id          String    @id @default(uuid())
-  userName    String    @unique
-  email       String    @unique
-  password    String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  lastSession DateTime?
-  role        Role      @default(USER)
-  cart        Cart?
-  profile     Profile?
+  id                 String    @id @default(uuid())
+  userName           String    @unique
+  email              String    @unique
+  password           String
+  createdAt          DateTime  @default(now())
+  updatedAt          DateTime  @updatedAt
+  lastSession        DateTime?
+  role               Role      @default(USER)
+  cart               Cart?
+  profile            Profile?
+  termsAndConditions Boolean
+  privacyPolicy      Boolean
   // posts       Post[]
   //comments       Comment[]
 }

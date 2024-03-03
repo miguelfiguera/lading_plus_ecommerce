@@ -20,7 +20,7 @@ export async function registerNewUser(user: User) {
 
     if (proofOfExistence) {
         console.log(proofOfExistence);
-        throw new Error("User already exists");
+        throw new Error("User email already in use.");
     }
 
     if(!user.termsAndConditions || !user.privacyPolicy){

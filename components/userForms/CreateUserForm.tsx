@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { registerNewUser } from "@/lib/prismaUserCRUD";
 import toast from "react-hot-toast";
 import {User} from '@/interfaces/interfaces'
+import { useRouter } from "next/navigation";
 
 type FormData = {
   email: string;
@@ -17,6 +18,8 @@ type FormData = {
 };
 
 export default function CreateUserForm() {
+const router = useRouter()
+
   const {
     register,
     handleSubmit,
@@ -49,6 +52,7 @@ export default function CreateUserForm() {
     try{
       const newUser= await registerNewUser(templateUser)
       toast.success(`User created: ${newUser.userName}`);
+      router.push("/login")
     }
     catch(e:any){
         toast.error(e.message);

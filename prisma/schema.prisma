@@ -25,8 +25,8 @@ model User {
   role               Role      @default(USER)
   cart               Cart?
   profile            Profile?
-  termsAndConditions Boolean
-  privacyPolicy      Boolean
+  termsAndConditions Boolean @default(false)
+  privacyPolicy      Boolean @default(false)
   // posts       Post[]
   //comments       Comment[]
 }

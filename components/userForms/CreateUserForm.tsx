@@ -1,44 +1,66 @@
 "use client";
 
 import React from "react";
-import { userForm } from "@/interfaces/interfaces";
 import Link from "next/link";
 import { useForm } from "react-hook-form";
-import { registerNewUser, updateUser } from "@/lib/prismaUserCRUD";
+import { registerNewUser } from "@/lib/prismaUserCRUD";
 import toast from "react-hot-toast";
+import {User} from '@/interfaces/interfaces'
 
 type FormData = {
   email: string;
   userName: string;
   password: string;
   passwordConfirm: string;
-  acceptedTerms?: boolean;
-  acceptedPrivacyPolicy?: boolean;
+  acceptedTerms: boolean;
+  acceptedPrivacyPolicy: boolean;
 };
 
-export default function UserForm({ value }: { value: userForm }) {
+export default function CreateUserForm() {
   const {
     register,
-    setValue,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = handleSubmit((data) => {
-    console.log(data);
+  const onSubmit = handleSubmit(async(data) => {
+    if(data.email==="" || data.userName==="" || data.password==="" || data.passwordConfirm===""){
+        toast.error("ERROR: All fields are required");
+        return
+    }
+
     if (data.password !== data.passwordConfirm) {
       toast.error("ERROR: Passwords do not match");
       return;
     }
-    if (data.acceptedTerms === false || data.acceptedPrivacyPolicy === false) {
+    if (data.acceptedTerms !== true || data.acceptedPrivacyPolicy !== true) {
       toast.error("You must accept privacy policy and terms & conditions.");
       return;
     }
+
+    const templateUser:User={
+      email:data.email,
+      password:data.password,
+      userName:data.userName,
+      termsAndConditions: data.acceptedTerms,
+      privacyPolicy: data.acceptedPrivacyPolicy
+    }
+
+    try{
+      const newUser= await registerNewUser(templateUser)
+      toast.success(`User created: ${newUser.userName}`);
+    }
+    catch(e:any){
+        toast.error(e.message);
+        return
+    }
+
+
   });
 
   return (
     <div className="container my-5 border rounded-3 p-5 shadow-lg" style={{ maxWidth: "50%" }}>
-      <h1 className="fs-3 text-center">{value.type==='editUser' ? "Edit" : "Create"} User</h1>
+      <h1 className="fs-3 text-center">Create User</h1>
       <form onSubmit={onSubmit}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
@@ -78,7 +100,6 @@ export default function UserForm({ value }: { value: userForm }) {
             id="password"
           />
         </div>
-        {value.type == "createUser" && (
           <div className="mb-3">
             <label htmlFor="passwordConfirm" className="form-label">
               Confirm Password
@@ -90,9 +111,8 @@ export default function UserForm({ value }: { value: userForm }) {
               id="passwordConfirm"
             />
           </div>
-        )}
+        
 
-        {value.type == "createUser" && (
           <div>
             {" "}
             <div className="mb-3 form-check">
@@ -122,7 +142,7 @@ export default function UserForm({ value }: { value: userForm }) {
               </label>
             </div>{" "}
           </div>
-        )}
+        
 
         <button type="submit" className="btn btn-primary">
           Submit

@@ -1,11 +1,11 @@
 import React from 'react'
-import UserForm from '@/components/userForms/UserForm'
+import CreateUserForm from '@/components/userForms/CreateUserForm'
 
 export default function page() {
   return (
     <div>
       
-    <UserForm value={{type:'createUser'}} />
+    <CreateUserForm/>
 
 
     </div>

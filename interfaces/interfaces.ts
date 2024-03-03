@@ -81,9 +81,3 @@ enum Gender {
   }
 
 
-  // userForm Interfaces
-
-  export interface userForm{
-    type:'editUser' | 'createUser'
-    user?:'string'
-  }

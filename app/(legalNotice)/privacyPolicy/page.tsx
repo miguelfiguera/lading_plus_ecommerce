@@ -45,9 +45,9 @@ export default function page() {
         We want to inform you that whenever you visit our Service, we collect
         information that your browser sends to us that is called Log Data. This
         Log Data may include information such as your computer&apos;s Internet
-        Protocol (&quot;IP&quot;) address, browser version, pages of our Service that you
-        visit, the time and date of your visit, the time spent on those pages,
-        and other statistics.
+        Protocol (&quot;IP&quot;) address, browser version, pages of our Service
+        that you visit, the time and date of your visit, the time spent on those
+        pages, and other statistics.
       </p>
 
       <h2>Cookies</h2>
@@ -55,7 +55,8 @@ export default function page() {
       <p>
         Cookies are files with small amount of data that is commonly used an
         anonymous unique identifier. These are sent to your browser from the
-        website that you visit and are stored on your computer&apos;s hard drive.
+        website that you visit and are stored on your computer&apos;s hard
+        drive.
       </p>
 
       <p>

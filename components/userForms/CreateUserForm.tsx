@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { registerNewUser } from "@/lib/prismaUserCRUD";
 import toast from "react-hot-toast";
-import {User} from '@/interfaces/interfaces'
+import { User } from "@/interfaces/interfaces";
 import { useRouter } from "next/navigation";
 
 type FormData = {
@@ -18,7 +18,7 @@ type FormData = {
 };
 
 export default function CreateUserForm() {
-const router = useRouter()
+  const router = useRouter();
 
   const {
     register,
@@ -26,10 +26,15 @@ const router = useRouter()
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = handleSubmit(async(data) => {
-    if(data.email==="" || data.userName==="" || data.password==="" || data.passwordConfirm===""){
-        toast.error("ERROR: All fields are required");
-        return
+  const onSubmit = handleSubmit(async (data) => {
+    if (
+      data.email === "" ||
+      data.userName === "" ||
+      data.password === "" ||
+      data.passwordConfirm === ""
+    ) {
+      toast.error("ERROR: All fields are required");
+      return;
     }
 
     if (data.password !== data.passwordConfirm) {
@@ -41,29 +46,29 @@ const router = useRouter()
       return;
     }
 
-    const templateUser:User={
-      email:data.email,
-      password:data.password,
-      userName:data.userName,
+    const templateUser: User = {
+      email: data.email,
+      password: data.password,
+      userName: data.userName,
       termsAndConditions: data.acceptedTerms,
-      privacyPolicy: data.acceptedPrivacyPolicy
-    }
+      privacyPolicy: data.acceptedPrivacyPolicy,
+    };
 
-    try{
-      const newUser= await registerNewUser(templateUser)
+    try {
+      const newUser = await registerNewUser(templateUser);
       toast.success(`User created: ${newUser.userName}`);
-      router.push("/login")
+      router.push("/login");
+    } catch (e: any) {
+      toast.error(e.message);
+      return;
     }
-    catch(e:any){
-        toast.error(e.message);
-        return
-    }
-
-
   });
 
   return (
-    <div className="container my-5 border rounded-3 p-5 shadow-lg" style={{ maxWidth: "50%" }}>
+    <div
+      className="container my-5 border rounded-3 p-5 shadow-lg"
+      style={{ maxWidth: "50%" }}
+    >
       <h1 className="fs-3 text-center">Create User</h1>
       <form onSubmit={onSubmit}>
         <div className="mb-3">
@@ -104,49 +109,44 @@ const router = useRouter()
             id="password"
           />
         </div>
-          <div className="mb-3">
-            <label htmlFor="passwordConfirm" className="form-label">
-              Confirm Password
-            </label>
-            <input
-              type="password"
-              {...register("passwordConfirm")}
-              className="form-control"
-              id="passwordConfirm"
-            />
-          </div>
-        
+        <div className="mb-3">
+          <label htmlFor="passwordConfirm" className="form-label">
+            Confirm Password
+          </label>
+          <input
+            type="password"
+            {...register("passwordConfirm")}
+            className="form-control"
+            id="passwordConfirm"
+          />
+        </div>
 
-          <div>
-            {" "}
-            <div className="mb-3 form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="acceptedTerms"
-                {...register("acceptedTerms")}
-              />
-              <label className="form-check-label" htmlFor="acceptedTerms">
-                I Accept the{" "}
-                <Link href="/termsAndConditions">Terms and Conditions</Link>
-              </label>
-            </div>
-            <div className="mb-3 form-check">
-              <input
-                type="checkbox"
-                className="form-check-input"
-                id="acceptedPrivacyPolicy"
-                {...register("acceptedPrivacyPolicy")}
-              />
-              <label
-                className="form-check-label"
-                htmlFor="acceptedPrivacyPolicy"
-              >
-                I Accept the <Link href="/privacyPolicy">Privacy Policy</Link>
-              </label>
-            </div>{" "}
+        <div>
+          {" "}
+          <div className="mb-3 form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="acceptedTerms"
+              {...register("acceptedTerms")}
+            />
+            <label className="form-check-label" htmlFor="acceptedTerms">
+              I Accept the{" "}
+              <Link href="/termsAndConditions">Terms and Conditions</Link>
+            </label>
           </div>
-        
+          <div className="mb-3 form-check">
+            <input
+              type="checkbox"
+              className="form-check-input"
+              id="acceptedPrivacyPolicy"
+              {...register("acceptedPrivacyPolicy")}
+            />
+            <label className="form-check-label" htmlFor="acceptedPrivacyPolicy">
+              I Accept the <Link href="/privacyPolicy">Privacy Policy</Link>
+            </label>
+          </div>{" "}
+        </div>
 
         <button type="submit" className="btn btn-primary">
           Submit

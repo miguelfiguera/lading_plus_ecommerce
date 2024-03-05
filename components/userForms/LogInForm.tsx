@@ -2,18 +2,13 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { signIn, signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import { Prisma } from "@prisma/client";
-
+import { logInAction, logOutAction } from "@/lib/SessionActions/SessionActions";
 type FormData = {
   email: string;
   password: string;
 };
 
 export default function LogInForm() {
-  const router = useRouter();
-
   const {
     register,
     handleSubmit,
@@ -27,24 +22,13 @@ export default function LogInForm() {
     }
 
     try {
-      const user = await signIn("credentials", {
+      await logInAction({
         email: data.email,
         password: data.password,
       });
-
-      console.log(user)
-      if (user) {
-        toast.success("Successfully logged in.");
-        console.log(user);
-        router.push("/");
-      }
-      if (user == null) {
-        toast.error("Incorrect User or Password, try again");
-        return;
-      }
+      toast.success("Logged in successfully");
     } catch (error: any) {
-      toast.error("Error: " + error.message);
-      return;
+      toast.error(error);
     }
   });
 
@@ -78,16 +62,13 @@ export default function LogInForm() {
             id="password"
           />
         </div>
-        {/*     <div className="mb-3 form-check">
-      <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-      <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-    </div> */}
+
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
       </form>
 
-      <button className="btn btn-danger" onClick={() => signOut()}>
+      <button className="btn btn-danger" onClick={async () => logOutAction()}>
         Log Out
       </button>
     </div>

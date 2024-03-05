@@ -35,7 +35,6 @@ export default function AboutUsRows() {
             src={product2}
             alt="Product 2"
             className="rounded-3"
-
             style={{ width: "100%", height: "100%" }}
           />
         </div>
@@ -65,7 +64,6 @@ export default function AboutUsRows() {
           <Image
             src={product3}
             className="rounded-3"
-
             alt="Product 3"
             style={{ width: "100%", height: "100%" }}
           />

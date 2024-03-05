@@ -4,7 +4,7 @@ export default function Footer() {
   const paragraphStyles = {
     fontSize: "14px",
     fontWeight: "300",
-   // color: "black",
+    // color: "black",
     maxWidth: "70%",
   };
 
@@ -27,15 +27,15 @@ export default function Footer() {
     fontWeight: "800",
   };
 
-  const otherColor={
-    color:"#DADADA"
-  }
+  const otherColor = {
+    color: "#DADADA",
+  };
 
   return (
     <div
       className="container-fluid border-top"
       style={{
-      //  backgroundColor: "rgba(11,86,118,1)",
+        //  backgroundColor: "rgba(11,86,118,1)",
         color: "white",
         paddingBottom: "30px",
         paddingTop: "30px",
@@ -89,7 +89,11 @@ export default function Footer() {
                 className="mx-2 my-2 my-footer-buttons "
                 style={socialNetworkButtons}
               >
-                <Link href="https://twitter.com/" target="_blank" rel="noreferrer">
+                <Link
+                  href="https://twitter.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {" "}
                   <i
                     className="fa-brands fa-x-twitter fa-xl mx-2"
@@ -123,7 +127,7 @@ export default function Footer() {
                 >
                   <i
                     className="fa-brands fa-linkedin-in mx-2 fa-xl"
-                    style={otherColor }
+                    style={otherColor}
                   ></i>
                 </Link>
               </button>
@@ -141,8 +145,8 @@ export default function Footer() {
                     style={otherColor}
                   ></i>
                 </Link>
-                </button>
-                <button
+              </button>
+              <button
                 className="mx-2 my-2 my-footer-buttons"
                 style={socialNetworkButtons}
               >
@@ -156,8 +160,8 @@ export default function Footer() {
                     style={otherColor}
                   ></i>
                 </Link>
-                </button>
-                <button
+              </button>
+              <button
                 className="mx-2 my-2 my-footer-buttons"
                 style={socialNetworkButtons}
               >

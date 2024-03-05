@@ -1,12 +1,9 @@
-import React from 'react'
-import LogInForm from '@/components/userForms/LogInForm'
+import React from "react";
+import LogInForm from "@/components/userForms/LogInForm";
 export default function page() {
   return (
     <div>
-      <LogInForm/>
-
-
-
+      <LogInForm />
     </div>
-  )
+  );
 }

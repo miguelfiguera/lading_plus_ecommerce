@@ -1,4 +1,5 @@
 # Dependencies
+
 1. Prisma
 2. Typescript
 3. bcryptJS
@@ -7,12 +8,7 @@
 6. Bootstrap
 7. Faker-js for seeding database.
 
-
-
-
-
 # Notes
-
 
 Template "Landing + ecommerce"
 Pagina web con base de datos, avisos por correo y gestion admin para crear, modificar, leer y desactivar productos.
@@ -57,7 +53,6 @@ Desktop Friendly.
 Deployment on netlify
 
 This is a Next.js project bootstrapped with create-next-app.
-
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

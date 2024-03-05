@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Hero from "@/components/landingComponents/Hero";
 import Navbar from "@/components/landingComponents/Navbar";
 import Footer from "@/components/landingComponents/Footer";
 import { Toaster } from "react-hot-toast";
@@ -23,7 +22,6 @@ export default function RootLayout({
       <body>
         <Toaster />
         <Navbar />
-        <Hero />
         <div>{children}</div>
         <Footer />
         <link

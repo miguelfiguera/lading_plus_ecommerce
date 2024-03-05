@@ -6,7 +6,7 @@ export interface User{
     password:string
     createdAt?: Date
     updatedAt?: Date
-    lastSession?: Date
+    lastSession?: Date | null
     role?: Role 
     cart?:Cart
     profile?: Profile

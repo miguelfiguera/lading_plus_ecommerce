@@ -1,13 +1,28 @@
 "use server";
 import { prisma } from "./prisma";
 import { Prisma } from "@prisma/client";
-
+import bcrypt from 'bcrypt'
 //Client Queries:
 
 type userQuery = {
     type: "email" | "userName" | "id";
     value: string;
 };
+
+type userValidation={
+    email:string,
+    password:string
+}
+
+type User={
+    userName:string
+    email:string
+    termsAndConditions: Boolean
+    privacyPolicy:      Boolean
+    password:string
+    createdAt: Date
+    updatedAt: Date
+}
 
 export async function getUser(query: userQuery) {
     try {
@@ -92,6 +107,24 @@ export async function getUserWithCart(query: userQuery) {
             break;
     }
     return user;
+}
+
+export async function validateUser(value:userValidation):Promise<{user:User,value:boolean}> {
+    const user= await prisma.user.findUnique({where:{email:value.email}});
+    if(!user){
+        throw new Error ('Incorrect User or Password, try again')
+    }
+
+    const validation = await bcrypt.compare(value.password, user.password);
+
+    if(!validation){
+        throw new Error ('Incorrect User or Password, try again')
+    }
+
+
+    user.password='';
+    return {user:user,value:true}
+
 }
 
 //Bill Queries

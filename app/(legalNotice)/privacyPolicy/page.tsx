@@ -1,19 +1,22 @@
 import React from "react";
 
 export default function page() {
+  const website = " WEBSITE NAME";
+  const NameWebsite=" URL HERE!"
+  const company = " YOUR NAME HERE";
   return (
-    <div>
-      <h1>Privacy Policy of YOUR NAME HERE</h1>
+    <div className="container">
+      <h1>Privacy Policy of {`${company}`}</h1>
 
       <p>
-        YOUR NAME HERE operates the YOUR URL HERE website, which provides the
+        {`${company}`} operates the {`${website}`} website, which provides the
         SERVICE.
       </p>
 
       <p>
         This page is used to inform website visitors regarding our policies with
         the collection, use, and disclosure of Personal Information if anyone
-        decided to use our Service, the YOUR WEBSITE HERE website.
+        decided to use our Service, the {`${NameWebsite}`} website.
       </p>
 
       <p>
@@ -26,7 +29,7 @@ export default function page() {
 
       <p>
         The terms used in this Privacy Policy have the same meanings as in our
-        Terms and Conditions, which is accessible at YOUR URL HERE, unless
+        Terms and Conditions, which is accessible at {`${website}`}, unless
         otherwise defined in this Privacy Policy.
       </p>
 

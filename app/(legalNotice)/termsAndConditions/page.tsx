@@ -1,17 +1,20 @@
 import React from "react";
 
 export default function page() {
+  const website = " YOUR URL HERE";
+  const NameWebsite=" YOUR WEBSITE HERE!"
+  const company = " YOUR NAME HERE";
   return (
-    <div>
+    <div className="container">
       <h2>
         <strong>Terms and Conditions</strong>
       </h2>
 
-      <p>Welcome to YOUR WEBSITE HERE!</p>
+      <p>Welcome to{`${NameWebsite}`}</p>
 
       <p>
         These terms and conditions outline the rules and regulations for the use
-        of YOUR NAME HERE&apos;s Website, located at YOUR URL HERE.
+        of {`${company}`}&apos;s Website, located at{`${website}`}.
       </p>
 
       <p>
@@ -44,7 +47,7 @@ export default function page() {
 
       <p>
         We employ the use of cookies. By accessing YOUR WEBSITE HERE, you agreed
-        to use cookies in agreement with the YOUR NAME HERE&apos;s Privacy
+        to use cookies in agreement with the {`${company}`}&apos;s Privacy
         Policy.{" "}
       </p>
 
@@ -61,7 +64,7 @@ export default function page() {
       </h3>
 
       <p>
-        Unless otherwise stated, YOUR NAME HERE and/or its licensors own the
+        Unless otherwise stated, {`${company}`} and/or its licensors own the
         intellectual property rights for all material on YOUR WEBSITE HERE. All
         intellectual property rights are reserved. You may access this from YOUR
         WEBSITE HERE for your own personal use subjected to restrictions set in
@@ -90,16 +93,16 @@ export default function page() {
         exchange opinions and information in certain areas of the website. YOUR
         NAME HERE does not filter, edit, publish or review Comments prior to
         their presence on the website. Comments do not reflect the views and
-        opinions of YOUR NAME HERE,its agents and/or affiliates. Comments
+        opinions of {`${company}`},its agents and/or affiliates. Comments
         reflect the views and opinions of the person who post their views and
-        opinions. To the extent permitted by applicable laws, YOUR NAME HERE
+        opinions. To the extent permitted by applicable laws, {`${company}`}
         shall not be liable for the Comments or for any liability, damages or
         expenses caused and/or suffered as a result of any use of and/or posting
         of and/or appearance of the Comments on this website.
       </p>
 
       <p>
-        YOUR NAME HERE reserves the right to monitor all Comments and to remove
+        {`${company}`} reserves the right to monitor all Comments and to remove
         any Comments which can be considered inappropriate, offensive or causes
         breach of these Terms and Conditions.
       </p>
@@ -127,7 +130,7 @@ export default function page() {
       </ul>
 
       <p>
-        You hereby grant YOUR NAME HERE a non-exclusive license to use,
+        You hereby grant {`${company}`} a non-exclusive license to use,
         reproduce, edit and authorize others to use, reproduce and edit any of
         your Comments in any and all forms, formats or media.
       </p>
@@ -185,7 +188,7 @@ export default function page() {
         that: (a) the link would not make us look unfavorably to ourselves or to
         our accredited businesses; (b) the organization does not have any
         negative records with us; (c) the benefit to us from the visibility of
-        the hyperlink compensates the absence of YOUR NAME HERE; and (d) the
+        the hyperlink compensates the absence of {`${company}`}; and (d) the
         link is in the context of general resource information.
       </p>
 
@@ -200,7 +203,7 @@ export default function page() {
       <p>
         If you are one of the organizations listed in paragraph 2 above and are
         interested in linking to our website, you must inform us by sending an
-        e-mail to YOUR NAME HERE. Please include your name, your organization
+        e-mail to {`${company}`}. Please include your name, your organization
         name, contact information as well as the URL of your site, a list of any
         URLs from which you intend to link to our Website, and a list of the
         URLs on our site to which you would like to link. Wait 2-3 weeks for a
@@ -220,7 +223,7 @@ export default function page() {
       </ul>
 
       <p>
-        No use of YOUR NAME HERE&apos;s logo or other artwork will be allowed
+        No use of {`${company}`}&apos;s logo or other artwork will be allowed
         for linking absent a trademark license agreement.
       </p>
 

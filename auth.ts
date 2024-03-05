@@ -3,8 +3,22 @@ import { PrismaAdapter } from "@auth/prisma-adapter"
 import authConfig from "@/auth.config"
 import {prisma} from '@/lib/prisma'
 import { getUser } from "./lib/prismaQueries"
+import { DefaultSession } from "next-auth"
 
-//const prismaClient = new PrismaClient()
+export type ExtendedUser=DefaultSession['user'] &{
+  role: 'USER' | 'ADMIN' | "ROOT"
+ }
+
+ declare module 'next-auth'{
+  interface Session{
+    user:ExtendedUser
+
+  }
+ }
+
+
+
+
 
 export const { handlers:{GET,POST}, auth,signIn,signOut } = NextAuth({
   callbacks: {
@@ -15,6 +29,17 @@ export const { handlers:{GET,POST}, auth,signIn,signOut } = NextAuth({
       return baseUrl
     }, */
     async session({ session, user, token }) {
+
+      if(!token.sub || !token.email){
+        return session
+      }
+
+      if(token.role && session.user){
+        session.user.role=token.role as 'ADMIN' | 'USER' | "ROOT"
+      }
+
+      session.user.name=token.name
+      session.user.email=token.email
 
       return session
     },

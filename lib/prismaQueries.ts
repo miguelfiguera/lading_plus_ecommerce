@@ -45,6 +45,8 @@ export async function getUser(query: userQuery) {
         return user;
     } catch (error) {
         if (error instanceof Prisma.PrismaClientKnownRequestError) {
+            console.log(error.code)
+            return null
             // define the switch case for the error code on their own, because they are really extensive
         }
         if (error instanceof Error) {

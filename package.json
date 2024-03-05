@@ -14,10 +14,13 @@
   "dependencies": {
     "@auth/core": "^0.27.0",
     "@auth/prisma-adapter": "^1.5.0",
+    "@mapbox/node-pre-gyp": "^1.0.11",
     "@prisma/client": "^5.10.2",
     "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "next": "14.1.0",
     "next-auth": "^5.0.0-beta.15",
+    "node-gyp": "^10.0.1",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.51.0",
@@ -25,6 +28,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

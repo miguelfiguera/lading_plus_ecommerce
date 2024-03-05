@@ -1,8 +1,7 @@
 "use server";
-//import { NextResponse } from "next/server";
 import { prisma } from "./prisma";
 import { User } from "@/interfaces/interfaces";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import {Prisma} from "@prisma/client"
 
 export async function registerNewUser(user: User) {

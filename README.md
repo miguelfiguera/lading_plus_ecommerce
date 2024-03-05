@@ -1,7 +1,7 @@
 # Dependencies
 1. Prisma
 2. Typescript
-3. bcrypt
+3. bcryptJS
 4. nextAuth/auth.js
 5. react-hot-toast
 6. Bootstrap

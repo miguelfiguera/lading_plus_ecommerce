@@ -5,7 +5,7 @@ const {auth} = NextAuth(authConfig)
 
 export default auth((req) => {
 const isLoggedIn=!!req.auth
-console.log("ROUTE: ", req.nextUrl.pathname)
+//console.log("ROUTE: ", req.nextUrl.pathname)
 console.log("Logged ? ", isLoggedIn)
 
 })

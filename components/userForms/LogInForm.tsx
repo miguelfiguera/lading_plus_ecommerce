@@ -2,7 +2,9 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { logInAction, logOutAction } from "@/lib/SessionActions/SessionActions";
+import { logInAction,
+  // logOutAction
+   } from "@/lib/SessionActions/SessionActions";
 type FormData = {
   email: string;
   password: string;
@@ -68,9 +70,9 @@ export default function LogInForm() {
         </button>
       </form>
 
-      <button className="btn btn-danger" onClick={async () => logOutAction()}>
+{/*       <button className="btn btn-danger" onClick={async () => logOutAction()}>
         Log Out
-      </button>
+      </button> */}
     </div>
   );
 }

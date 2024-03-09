@@ -41,15 +41,15 @@ export default async function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav">
-            <Link className="nav-link" href="about">
+            <Link className="nav-link" href="/about">
               About
             </Link>
             <Link className="nav-link" href="/store">
               Store
             </Link>
-            <Link className="nav-link" href="/profile">
+          {session &&  <Link className="nav-link" href="/profile">
               Profile
-            </Link>
+            </Link>}
 
             <Link className="nav-link" href="/blog">
               Blog
@@ -69,7 +69,7 @@ export default async function Navbar() {
 
         <div className="justify-content-end d-flex gap-3">
         <Link href="/cart" className="me-4 mt-1"><i className="fa-solid fa-cart-shopping fa-xl" style={iconStyles}></i></Link>
-  <LogOutButton />
+        {session ? <LogOutButton /> : <Link href='/login' className="btn btn-primary">LogIn</Link>}
         </div>
       </div>
     </nav>

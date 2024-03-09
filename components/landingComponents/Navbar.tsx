@@ -55,7 +55,7 @@ export default async function Navbar() {
               Blog
             </Link>
             {boolean && (
-              <div>
+              <div className="navbar-nav">
                 <Link className="nav-link" href="#">
                   Admin
                 </Link>

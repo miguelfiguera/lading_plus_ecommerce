@@ -1,9 +1,14 @@
 import React from "react";
 import Link from "next/link";
 import { auth } from "@/auth";
+import LogOutButton from "../GeneralUseComponents/LogOutButton";
 
 export default async function Navbar() {
   let boolean: Boolean = false;
+
+  const iconStyles={
+    color:'#DADADA'
+  }
 
   const session = await auth();
 
@@ -60,6 +65,11 @@ export default async function Navbar() {
               </div>
             )}
           </div>
+        </div>
+
+        <div className="justify-content-end d-flex gap-3">
+        <Link href="/cart" className="me-4 mt-1"><i className="fa-solid fa-cart-shopping fa-xl" style={iconStyles}></i></Link>
+  <LogOutButton />
         </div>
       </div>
     </nav>

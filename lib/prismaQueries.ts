@@ -169,6 +169,22 @@ export async function getUserBills(value: billQuery) {
 }
 
 //Cart Queries
+export async function getUserCart(userIdValue:string){
+
+      const userCart = await prisma.cart.findUnique({
+          where: {
+              userId: userIdValue
+          },
+          include: {
+              products: true
+          }
+      })
+      
+      if(userCart){return userCart}
+  
+
+  return null
+}
 
 //Product Queries
 

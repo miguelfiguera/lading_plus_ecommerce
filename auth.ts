@@ -8,6 +8,7 @@ import { Role } from "@prisma/client";
 
 export type ExtendedUser = DefaultSession["user"] & {
   role: Role;
+  id: String;
 };
 
 declare module "next-auth" {
@@ -41,6 +42,7 @@ export const {
 
       session.user.name = token.name;
       session.user.email = token.email;
+      session.user.id=token.id as string 
 
       return session;
     },
@@ -57,6 +59,7 @@ export const {
 
       token.role = findUser.role;
       token.name = findUser.userName;
+      token.id=findUser.id
 
       return token;
     },

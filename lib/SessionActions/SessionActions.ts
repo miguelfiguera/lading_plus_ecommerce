@@ -1,5 +1,5 @@
 "use server";
-import { signIn, signOut } from "@/auth";
+import { signIn, signOut,auth } from "@/auth";
 import { AuthError } from "next-auth";
 type credentials = {
   email: string;
@@ -27,6 +27,13 @@ export async function logInAction(value: credentials): Promise<any> {
   }
 }
 
-export async function logOutAction() {
+export async function logOutAction():Promise<void> {
   await signOut();
+}
+
+export async function validateSession():Promise<boolean | null> {
+  const session =await auth()
+  if(!session){return null}
+
+  return true
 }

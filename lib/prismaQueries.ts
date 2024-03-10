@@ -57,8 +57,20 @@ export async function getUser(query: userQuery) {
 }
 
 export async function getAllusers() {
-  let users = await prisma.user.findMany();
-  return users;
+  try{let users = await prisma.user.findMany();
+
+    if(!users){return null}
+  
+    return users;
+}
+  catch(e){
+    if (e instanceof Prisma.PrismaClientKnownRequestError){
+      return e.code
+    }
+    if(e instanceof Error){
+    return e.message}
+    }
+
 }
 
 export async function getUserWithProfile(query: userQuery) {
@@ -159,5 +171,19 @@ export async function getUserBills(value: billQuery) {
 //Cart Queries
 
 //Product Queries
+
+export async function getAllProducts(){
+  try{const products = await prisma.product.findMany();
+    if(!products){return null}
+
+  return products}
+  catch(e){
+    if (e instanceof Prisma.PrismaClientKnownRequestError){
+      return e.code
+    }
+    if(e instanceof Error){
+    return e.message}
+    }
+}
 
 //Profile Queries

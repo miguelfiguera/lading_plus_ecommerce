@@ -66,7 +66,7 @@ export default function page() {
           <blockquote className="blockquote mb-0">
             <p className="fst-italic mb-3">&ldquo;...As I experienced certain sensory input patterns, my mental pathways have been accustomed to them. The input is eventually anticipated, and even missed when absent...&ldquo;</p>
             <footer className="blockquote-footer">
-             Lt. Data on his friendship with Tasha Yar.<cite title="Source Title"> Star Trek: The Next Generation</cite>
+            Lt. Cmdr. Data on his friendship with Tasha Yar.<cite title="Source Title"> Star Trek: The Next Generation</cite>
             </footer>
           </blockquote>
         </div>

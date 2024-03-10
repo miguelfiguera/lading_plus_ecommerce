@@ -5,7 +5,7 @@ import ItemCard from "./ItemCard";
 import { validateSession } from "@/lib/SessionActions/SessionActions";
 import { getAllProducts } from "@/lib/prismaQueries";
 import { Product } from "@prisma/client";
-import {OnCanvasCart} from "@/components/storeComponents/OnCanvasCart";
+import OnCanvasCart from "@/components/storeComponents/OnCanvasCart";
 //import toast from "react-hot-toast";
 
 type Categories = string[];

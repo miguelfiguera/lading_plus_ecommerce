@@ -30,23 +30,20 @@ export default function StoreSideBar({
 
   const catLi = categories.map((e: string): JSX.Element => {
     return (
-      <li className="fs-5" key={e} onClick={() => handleCategory(e)}>
-        {e}
+      <li className="fs-5" key={e} onClick={() => handleCategory(e)}> <button className="my-2 btn btn-primary">
+        {e}</button>
       </li>
     );
   });
   return (
     <div className="container border rounded-3 mb-4 ps-0">
       <div className="d-flex flex-row justify-content-around">
-        <h3 className="text-center fs-4">Categories</h3>{" "}
-{/*         <i
-          className="fa-solid fa-xmark fa-xl my-auto"
-          style={{ cursor: "pointer" }}
-        ></i> */}
+        <h3 className="text-center fs-4 mt-3">Categories</h3>{" "}
+
       </div>
 
       <ul>
-        <li className='fs-5' onClick={()=>handleCategory('All')}>All</li>
+        <li className='fs-5 my-2' onClick={()=>handleCategory('All')}><button className='btn btn-primary'>All</button></li>
         {catLi}
         </ul>
     </div>

@@ -1,12 +1,16 @@
 "use client";
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import StoreSideBar from "@/components/storeComponents/StoreSideBar";
 import ItemCard from "./ItemCard";
-import { validateSession } from "@/lib/SessionActions/SessionActions";
-import { getAllProducts } from "@/lib/prismaQueries";
-import { Product } from "@prisma/client";
-import OnCanvasCart from "@/components/storeComponents/OnCanvasCart";
-//import toast from "react-hot-toast";
+import {
+  validateSession,
+  getUserSession,
+} from "@/lib/SessionActions/SessionActions";
+import { getAllProducts, getUserCart } from "@/lib/prismaQueries";
+import { Product, Cart } from "@prisma/client";
+import { logAction } from "@/lib/ServerLogAction";
+
+export const StoreContext = createContext<Cart | null>(null);
 
 type Categories = string[];
 
@@ -15,6 +19,7 @@ export default function ClientContainer() {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Categories>([]);
   const [activeCategories, setActiveCategories] = useState<String>("All");
+  const [cart, setCart] = useState<Cart | null>(null);
 
   useEffect(() => {
     async function setStates() {
@@ -28,10 +33,20 @@ export default function ClientContainer() {
 
       if (products instanceof Array && products.length > 0) {
         setProducts(products);
-        categories = products.map((product: Product) => {
-          return product.category;
-        });
+        categories = products
+          .map((product: Product) => {
+            return (
+              product.category[0].toUpperCase() + product.category.slice(1)
+            );
+          })
+          .sort();
         setCategories(categories);
+      }
+
+      const user = await getUserSession();
+      if (user) {
+        const cart = await getUserCart(user.user.id);
+        setCart(cart);
       }
     }
 
@@ -45,6 +60,7 @@ export default function ClientContainer() {
     .map((product: Product) => {
       return <ItemCard key={product.id} product={product} />;
     });
+
   const items = products.map((product: Product) => {
     return <ItemCard key={product.id} product={product} />;
   });
@@ -54,37 +70,35 @@ export default function ClientContainer() {
   };
 
   return (
-    <div>
-      {" "}
-      <div className="container-fluid">
-        <h1 className="text-center fs-2 my-4 text-decoration-underline">
-          Store
-        </h1>
-        <div className="row">
-          <div className="col col-lg-3">
-            {categories.length > 0 && (
-              <StoreSideBar
-                active={active}
-                categories={categories}
-                handleCategory={handleCategory}
-              />
-            )}
-          </div>
-          <div className="col">
-            {products.length <= 0 && (
-              <div className="spinner-border mx-auto" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </div>
-            )}
-            {activeCategories == "All" ? items : FilteredItems}{" "}
-          </div>
+    <StoreContext.Provider value={cart}>
+      <div>
+        {" "}
+        <div className="container-fluid">
+          <h1 className="text-center fs-2 my-4 text-decoration-underline">
+            Store
+          </h1>
+          <div className="row">
+            <div className="col-3">
+              {categories.length > 0 && (
+                <StoreSideBar
+                  active={active}
+                  categories={categories}
+                  handleCategory={handleCategory}
+                />
+              )}
+            </div>
 
-          <div className="col">
-            <OnCanvasCart/>
-
+            <div className="col-9">
+              {products.length <= 0 && (
+                <div className="spinner-border mx-auto" role="status">
+                  <span className="visually-hidden">Loading...</span>
+                </div>
+              )}
+              {activeCategories == "All" ? items : FilteredItems}{" "}
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div>{" "}
+    </StoreContext.Provider>
   );
 }

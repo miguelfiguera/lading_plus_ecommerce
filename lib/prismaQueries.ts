@@ -176,7 +176,7 @@ export async function getUserCart(userIdValue:string){
               userId: userIdValue
           },
           include: {
-              products: true
+              cartProducts: true
           }
       })
       
@@ -185,6 +185,24 @@ export async function getUserCart(userIdValue:string){
 
   return null
 }
+
+//CartProduct queries
+export async function getCartProducts(cartIdValue:number){
+const cartProducts = await prisma.cartProduct.findMany({
+  where:{
+    cartId: cartIdValue
+  },
+  include:{
+    product: true
+  }
+
+})
+}
+  
+
+
+
+
 
 //Product Queries
 

@@ -37,3 +37,10 @@ export async function validateSession():Promise<boolean | null> {
 
   return true
 }
+
+export async function getUserSession() {
+  const session= await auth();
+  if(session) return session
+
+  return null
+}

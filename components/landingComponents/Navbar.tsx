@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import { auth } from "@/auth";
 import LogOutButton from "../GeneralUseComponents/LogOutButton";
+import { logAction } from "@/lib/ServerLogAction";
 
 export default async function Navbar() {
   let boolean: Boolean = false;
@@ -11,6 +12,9 @@ export default async function Navbar() {
   }
 
   const session = await auth();
+  
+  // logAction and its import should be deleted as soon as this is ready for production.
+  logAction("Session FROM NAVBAR: " + JSON.stringify(session))
 
   if (session) {
     const user = session.user;

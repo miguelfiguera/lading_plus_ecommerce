@@ -8,7 +8,6 @@ import {
 } from "@/lib/SessionActions/SessionActions";
 import { getAllProducts, getUserCart } from "@/lib/prismaQueries";
 import { Product, Cart } from "@prisma/client";
-import { logAction } from "@/lib/ServerLogAction";
 
 export const StoreContext = createContext<Cart | null>(null);
 

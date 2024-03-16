@@ -14,6 +14,7 @@ export async function createCartProduct(value: {
       where: {
         productId: value.productId,
         cartId: value.cartId,
+        payed: false,
       },
     });
 

@@ -88,13 +88,25 @@ export default function ClientContainer() {
               )}
             </div>
 
-            <div className="col-9">
+            <div className="col-9 row">
               {products.length <= 0 && (
                 <div className="spinner-border mx-auto" role="status">
                   <span className="visually-hidden">Loading...</span>
                 </div>
               )}
-              {activeCategories == "All" ? items : FilteredItems}{" "}
+
+              <div className="col">
+                {" "}
+                {activeCategories == "All"
+                  ? items.slice(items.length / 2)
+                  : FilteredItems.slice(FilteredItems.length / 2)}{" "}
+              </div>
+              <div className="col">
+                {" "}
+                {activeCategories == "All"
+                  ? items.slice(0, items.length / 2)
+                  : FilteredItems.slice(0, FilteredItems.length / 2)}{" "}
+              </div>
             </div>
           </div>
         </div>

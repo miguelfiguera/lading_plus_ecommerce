@@ -108,6 +108,7 @@ export default function CreateProfile({
       data.country = data.country.toUpperCase();
     }
 
+    if(file){
     //upload image
 
     try {
@@ -127,8 +128,9 @@ export default function CreateProfile({
       toast.error(`Error getting image url: ${e}`);
       return;
     }
-
-
+  } else{
+    data.photoUrl = profile?.photoUrl || ''
+  }
     //create profile
     try {
       if (currentUser) {

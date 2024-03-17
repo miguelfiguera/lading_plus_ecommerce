@@ -3,9 +3,13 @@ import Link from "next/link";
 import { auth } from "@/auth";
 import LogOutButton from "../GeneralUseComponents/LogOutButton";
 import { logAction } from "@/lib/ServerLogAction";
+import { Session } from "next-auth";
+import { Role } from "@prisma/client";
+
 
 export default async function Navbar() {
   let boolean: Boolean = false;
+  let user=null
 
   const iconStyles={
     color:'#DADADA'
@@ -16,15 +20,19 @@ export default async function Navbar() {
   // logAction and its import should be deleted as soon as this is ready for production.
   logAction("Session FROM NAVBAR: " + JSON.stringify(session))
 
-  if (session) {
-    const user = session.user;
-
-    user.role == "ADMIN"
-      ? (boolean = true)
-      : user.role == "ROOT"
-        ? (boolean = true)
-        : (boolean = false);
-  }
+ switch(session?.user?.role){
+   case Role.ADMIN:
+     boolean = true;
+     break;
+   case Role.ROOT:
+     boolean = true;
+     break;
+   case Role.USER:
+     boolean = false;
+     break;
+   default:
+     boolean = false;
+ }
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">

@@ -109,34 +109,33 @@ export default function CreateProfile({
     }
 
     //upload image
-    if (file) {
-      uploadBytes(myRef, file)
-        .then((e) => {
-          toast.success("Profile Picture uploaded successfully!");
-        })
-        .catch((e) => {
-          toast.error(`Error uploading image: ${e.message}`);
-        });
+
+    try {
+      const imageUploading = await uploadBytes(myRef, file as File);
+      toast.success("Profile Picture uploaded successfully!");
+    } catch (e: any) {
+      toast.error(`Error uploading image: ${e.message}`);
     }
 
     //get image url
-    if (file) {
-      getDownloadURL(myRef)
-        .then((url) => {
-          data.photoUrl = url;
-        })
-        .catch((e) => {
-          toast.error(`Error getting image url: ${e}`);
-        });
+    try {
+      const theUrl = await getDownloadURL(myRef);
+      if (theUrl) {
+        data.photoUrl = theUrl;
+      }
+    } catch (e) {
+      toast.error(`Error getting image url: ${e}`);
+      return;
     }
+
 
     //create profile
     try {
       if (currentUser) {
-        const profile = await createProfile(currentUser?.user.id, data);
+        const theProfile = await createProfile(currentUser?.user.id, data);
 
-        toast.success("Profile created successfully!");
-        return profile;
+        toast.success(`Profile ${profile ? "updated" : "created"} successfully!`);
+        return theProfile;
       } else {
         toast.error("You must be logged in to create a profile");
         return null;
@@ -292,9 +291,11 @@ export default function CreateProfile({
         {/*             <!-- Otros campos (user, userId, idNumber, photoUrl) -->
          */}{" "}
         <div className="d-flex justify-content-around">
-          <button type="submit" className="btn btn-primary"
-                      style={{scale:'1.3'}}
-                      >
+          <button
+            type="submit"
+            className="btn btn-primary"
+            style={{ scale: "1.3" }}
+          >
             Save
           </button>
 
@@ -304,7 +305,7 @@ export default function CreateProfile({
               e.preventDefault();
               setActive(false);
             }}
-            style={{scale:'1.3'}}
+            style={{ scale: "1.3" }}
           >
             Cancel
           </button>

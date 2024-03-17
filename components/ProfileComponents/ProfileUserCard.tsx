@@ -13,7 +13,8 @@ export default function ProfileUserCard({ data }: { data: Profile }) {
         <img
               src={data.photoUrl ? data.photoUrl : ""}
               alt={`Profile photo of ${data.name}`}
-            />
+             style={{ maxHeight: "100%", maxWidth: "100%" }}
+             className="rounded-3 mx-2 my-2"/>
           </div>
           <div className="col-md-8">
             <div className="card-title fs-3">

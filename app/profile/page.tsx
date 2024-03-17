@@ -17,11 +17,10 @@ export default async function page() {
   let session: Session | null = null;
   let sessionToken: token | null = null;
   let profileData:Profile | null  = null;
-
   try {
     session = await getUserSession();
-    sessionToken = session?.user as token | null;
     if (session) {
+      sessionToken = session.user as token;
       const results = await getCurrentUserProfile(session?.user.id);
       if(results )
       profileData = results
@@ -30,10 +29,12 @@ export default async function page() {
     console.log(e);
     return e;
   }
+  console.log(sessionToken);
+  console.log(profileData);
   return (
     <div>
        {profileData && <ProfileUserCard data={profileData}/>}
-       <CreateProfile profile={profileData} currentUser={sessionToken} />
+       {sessionToken && <CreateProfile profile={profileData} currentUser={sessionToken} />}
     </div>
   );
 }

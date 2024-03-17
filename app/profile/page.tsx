@@ -4,13 +4,23 @@ import CreateProfile from "@/components/ProfileComponents/CreateProfile";
 import ProfileUserCard from "@/components/ProfileComponents/ProfileUserCard";
 import { getUserSession } from "@/lib/SessionActions/SessionActions";
 import { getCurrentUserProfile } from "@/lib/prismaQueries";
-import {Profile} from "@prisma/client"
+import {Profile,Role} from "@prisma/client"
+
+type token={
+  name:string,
+  email:string,
+  role:Role,
+  id:string,
+
+}
 export default async function page() {
   let session: Session | null = null;
+  let sessionToken: token | null = null;
   let profileData:Profile | null  = null;
 
   try {
     session = await getUserSession();
+    sessionToken = session?.user as token | null;
     if (session) {
       const results = await getCurrentUserProfile(session?.user.id);
       if(results )
@@ -23,7 +33,7 @@ export default async function page() {
   return (
     <div>
        {profileData && <ProfileUserCard data={profileData}/>}
-       <CreateProfile profile={profileData} currentUser={session} />
+       <CreateProfile profile={profileData} currentUser={sessionToken} />
     </div>
   );
 }

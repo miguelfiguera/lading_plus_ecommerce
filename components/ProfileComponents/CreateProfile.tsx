@@ -2,8 +2,7 @@
 
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { User, Gender, Profile } from "@prisma/client";
-import { Session } from "next-auth";
+import { User, Gender, Profile,Role } from "@prisma/client";
 import toast from "react-hot-toast";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { app } from "@/lib/firebase/firebase";
@@ -23,12 +22,19 @@ type initialProfile = {
   idNumber?: string;
   country?: string;
 };
+type token={
+  name:string,
+  email:string,
+  role:Role,
+  id:string,
+
+}
 
 export default function CreateProfile({
   currentUser,
   profile,
 }: {
-  currentUser: Session | null;
+  currentUser: token | null;
   profile: Profile | null;
 }) {
   const [file, setFile] = useState<File | null>(null);
@@ -39,7 +45,7 @@ export default function CreateProfile({
   //const requiredFields=['name','lastName','phoneNumber','address','country','idNumber']
   const myRef = ref(
     storage,
-    `ProfilePics/${currentUser?.user.name}.${file?.name.split(".")[1]}`
+    `ProfilePics/${currentUser?.name}.${file?.name.split(".")[1]}`
   );
 
   const {
@@ -134,7 +140,7 @@ export default function CreateProfile({
     //create profile
     try {
       if (currentUser) {
-        const theProfile = await createProfile(currentUser?.user.id, data);
+        const theProfile = await createProfile(currentUser?.id, data);
 
         toast.success(`Profile ${profile ? "updated" : "created"} successfully!`);
         return theProfile;

@@ -1,6 +1,7 @@
 "use server";
 import { signIn, signOut,auth } from "@/auth";
 import { AuthError } from "next-auth";
+import { Session } from "next-auth";
 type credentials = {
   email: string;
   password: string;
@@ -38,7 +39,7 @@ export async function validateSession():Promise<boolean | null> {
   return true
 }
 
-export async function getUserSession() {
+export async function getUserSession():Promise<Session |null> {
   const session= await auth();
   if(session) return session
 

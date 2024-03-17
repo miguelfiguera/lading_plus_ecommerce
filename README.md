@@ -7,6 +7,8 @@
 5. react-hot-toast
 6. Bootstrap
 7. Faker-js for seeding database.
+8. Firebase for Storage of pictures, images and pdf documents.
+9. React-hook-form
 
 # Notes
 

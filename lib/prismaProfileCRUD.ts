@@ -1,6 +1,6 @@
 "use server";
 import { prisma } from "./prisma";
-import { Prisma,Gender,User } from "@prisma/client";
+import { Prisma,Gender,User,Profile} from "@prisma/client";
 
 type userId={
     id:string
@@ -16,10 +16,6 @@ type initialProfile={
     user:User,
     userId:string
 }
-export async function createProfile(value:userId,){
-
-
-
-
+export async function createProfile(value:userId,profile:initialProfile):Promise<Profile>{
 
 }

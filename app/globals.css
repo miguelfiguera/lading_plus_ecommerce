@@ -1,0 +1,5 @@
+@layer base {
+Image{
+    @apply img
+}
+}

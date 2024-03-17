@@ -1,6 +1,6 @@
 "use server";
 import { prisma } from "./prisma";
-import { Prisma } from "@prisma/client";
+import { Prisma,Profile } from "@prisma/client";
 import bcrypt from "bcryptjs";
 //Client Queries:
 
@@ -221,3 +221,19 @@ export async function getAllProducts(){
 }
 
 //Profile Queries
+
+export async function getCurrentUserProfile(userId:string):Promise<Profile | null >{
+  try{
+    const profile= await prisma.profile.findUnique({where:{userId:userId}})
+    if(!profile){return null}
+    return profile
+  }catch(e:any){
+    if (e instanceof Prisma.PrismaClientKnownRequestError){
+      throw new Error(e.code)
+    }
+    if(e instanceof Error){
+      throw new Error(e.message)
+  }
+    }
+    return null
+}

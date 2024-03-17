@@ -1,10 +1,8 @@
 "use server";
 import { prisma } from "./prisma";
-import { Prisma,Gender,User,Profile} from "@prisma/client";
+import { Gender,User,Profile} from "@prisma/client";
 
-type userId={
-    id:string
-}
+
 type initialProfile={
     name:string,
     lastName:string,
@@ -15,7 +13,58 @@ type initialProfile={
     coordinates?:string
     user:User,
     userId:string
+    photoUrl?:string,
+    idNumber?:string
+    country?:string
 }
-export async function createProfile(value:userId,profile:initialProfile):Promise<Profile>{
+export async function createProfile(value:string,profile:initialProfile):Promise<Profile|null>{
+
+    const user=await prisma.user.findUnique({where:{id:value},include:{profile:true}})
+
+    //if already exist
+    if(user && user.profile){
+        const updatedProfile= await prisma.profile.update({
+            where:{
+                id:user.profile.id},
+                data:{
+                    name:profile.name,
+                    lastName:profile.lastName,
+                    phoneNumber:profile.phoneNumber,
+                    age:Number(profile.age),
+                    gender:profile.gender,
+                    address:profile.address,
+                    coordinates:profile.coordinates,
+                    user:{connect:{id:value}},
+                    photoUrl:profile.photoUrl,
+                    idNumber:profile.idNumber,
+                    country:profile.country
+                }
+        })
+    }
+
+    //if it doest not exist
+    if(user && !user.profile){
+
+        const newProfile=await prisma.profile.create({
+            data:{
+                name:profile.name,
+                lastName:profile.lastName,
+                phoneNumber:profile.phoneNumber,
+                age:Number(profile.age),
+                gender:profile.gender,
+                address:profile.address,
+                coordinates:profile.coordinates,
+                user:{connect:{id:value}},
+                photoUrl:profile.photoUrl,
+                idNumber:profile.idNumber,
+                country:profile.country || 'VENEZUELA'
+            }
+        })
+        return newProfile
+    }
+
+    
+    return null
+
 
 }

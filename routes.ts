@@ -8,4 +8,4 @@ export const protectedRoutes:string[]=[
 
 export const defaultLogInRedirect='/login'
 
-export const accessDenied='/accessDenied'
+export const denied='/accessDenied'

@@ -5,7 +5,6 @@ import ProfileUserCard from "@/components/ProfileComponents/ProfileUserCard";
 import { getUserSession } from "@/lib/SessionActions/SessionActions";
 import { getCurrentUserProfile } from "@/lib/prismaQueries";
 import {Profile,Role} from "@prisma/client"
-import {redirect} from 'next/navigation'
 
 type token={
   name:string,
@@ -29,10 +28,6 @@ export default async function page() {
 } catch (e) {
     console.log(e);
     return e;
-  }
-
-  if(!session){
-    redirect("/login")
   }
 
   return (

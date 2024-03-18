@@ -11,7 +11,7 @@ export default function AdminNavBar() {
         <Link
           className={`nav-link ${active == 0 ? "active" : ""}`}
           aria-current="page"
-          href="#"
+          href="/admin"
           onClick={() => setActive(0)}
         >
           Dashboard
@@ -19,7 +19,7 @@ export default function AdminNavBar() {
       </li>
       <li className="nav-item">
         <Link
-          href={"#"}
+          href={"/admin/products"}
           className={`nav-link ${active == 1 ? "active" : ""}`}
           aria-disabled="true"
           onClick={() => setActive(1)}
@@ -29,14 +29,14 @@ export default function AdminNavBar() {
         </Link>
       </li>
       <li className="nav-item">
-        <Link className={`nav-link ${active == 2 ? "active" : ""}`} href="#"
+        <Link className={`nav-link ${active == 2 ? "active" : ""}`} href="/admin/bills"
                   onClick={() => setActive(2)}
                   >
           Bills
         </Link>
       </li>
       <li className="nav-item">
-        <Link className={`nav-link ${active == 3 ? "active" : ""}`} href="#"
+        <Link className={`nav-link ${active == 3 ? "active" : ""}`} href="/admin/users"
                   onClick={() => setActive(3)}
                   >
           Users

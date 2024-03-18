@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { logInAction,
   // logOutAction
    } from "@/lib/SessionActions/SessionActions";
+   import Link from "next/link";
 type FormData = {
   email: string;
   password: string;
@@ -66,9 +67,14 @@ export default function LogInForm() {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Submit
+          Log In
         </button>
+        <div className="mt-3">
+        <p className="fs-6">New to the page? <Link href={"/register"}>Register here!</Link></p>
+      </div>
       </form>
+
+
 
 {/*       <button className="btn btn-danger" onClick={async () => logOutAction()}>
         Log Out

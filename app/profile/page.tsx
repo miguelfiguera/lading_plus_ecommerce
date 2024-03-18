@@ -29,8 +29,6 @@ export default async function page() {
     console.log(e);
     return e;
   }
-  console.log(sessionToken);
-  console.log(profileData);
   return (
     <div>
        {profileData && <ProfileUserCard data={profileData}/>}

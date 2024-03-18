@@ -143,6 +143,7 @@ export default function CreateProfile({
         const theProfile = await createProfile(currentUser?.id, data);
 
         toast.success(`Profile ${profile ? "updated" : "created"} successfully!`);
+        setActive(false);
         return theProfile;
       } else {
         toast.error("You must be logged in to create a profile");

@@ -1,4 +1,5 @@
 "use server";
+import { revalidatePath } from "next/cache";
 import { prisma } from "./prisma";
 import { Gender,User,Profile} from "@prisma/client";
 
@@ -40,6 +41,9 @@ export async function createProfile(value:string,profile:initialProfile):Promise
                     country:profile.country
                 }
         })
+
+        revalidatePath(`/profile`)
+        return updatedProfile
     }
 
     //if it doest not exist
@@ -60,6 +64,7 @@ export async function createProfile(value:string,profile:initialProfile):Promise
                 country:profile.country || 'VENEZUELA'
             }
         })
+        revalidatePath(`/profile`)
         return newProfile
     }
 

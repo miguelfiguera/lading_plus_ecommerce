@@ -85,6 +85,11 @@ model CartProduct {
   updatedAt DateTime @updatedAt
 }
 
+model BillProducts{
+id Int @id @default(autoincrement())
+
+}
+
 model Bill {
   id            Int           @id @default(autoincrement())
   userEmail     String

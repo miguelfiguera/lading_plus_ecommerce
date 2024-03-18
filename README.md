@@ -9,6 +9,7 @@
 7. Faker-js for seeding database.
 8. Firebase for Storage of pictures, images and pdf documents.
 9. React-hook-form
+10. Chartjs && React-ChartJs-2
 
 # Notes
 

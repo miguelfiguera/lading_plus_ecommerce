@@ -1,7 +1,6 @@
 import React from 'react'
 import {auth} from "@/auth"
 import { redirect } from 'next/navigation'
-import toast from 'react-hot-toast'
 export default async function page() {
 
   const session = await auth()
@@ -13,6 +12,15 @@ export default async function page() {
   }
 
   return (
-    <div>page</div>
+    <div>
+{/*       //Cards with number of users, bills (payed and pending), products, monthly revenue.
+
+      //Charts with the number of new users by month
+      //chart with the number of bills by month
+      //chart with the number of revenue by month
+       */}
+
+
+    </div>
   )
 }

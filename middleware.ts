@@ -1,7 +1,6 @@
 import authConfig from "@/auth.config";
 import NextAuth from "next-auth";
-import { publicRoutes, protectedRoutes, defaultLogInRedirect, accessDenied } from "./routes";
-import { getToken } from "next-auth/jwt";
+
 
 const { auth } = NextAuth(authConfig);
 

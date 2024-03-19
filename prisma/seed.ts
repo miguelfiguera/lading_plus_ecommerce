@@ -1,5 +1,5 @@
 //Add faker logic to populate the database
-import { prisma } from '@/lib/prisma'
+import { prisma } from '../lib/prisma'
 import { faker } from "@faker-js/faker";
 import { Role,Gender } from "@prisma/client";
 

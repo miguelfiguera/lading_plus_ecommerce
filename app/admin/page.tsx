@@ -12,6 +12,14 @@ export default async function page() {
        */}
 
 
+       <div className="container row">
+        <div className="col"></div>
+        <div className="col"></div>
+        <div className="col"></div>
+        <div className="col"></div>
+       </div>
+
+
     </div>
   )
 }

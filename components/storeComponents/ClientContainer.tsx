@@ -77,7 +77,7 @@ export default function ClientContainer() {
             Store
           </h1>
           <div className="row">
-            <div className="col-3">
+            <div className="col-2">
               {categories.length > 0 && (
                 <StoreSideBar
                   active={active}
@@ -87,7 +87,7 @@ export default function ClientContainer() {
               )}
             </div>
 
-            <div className="col-9 row">
+            <div className="col-10 row">
               {products.length <= 0 && (
                 <div className="spinner-border mx-auto" role="status">
                   <span className="visually-hidden">Loading...</span>

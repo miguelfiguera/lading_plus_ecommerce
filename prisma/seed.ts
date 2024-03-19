@@ -2,6 +2,8 @@
 import { prisma } from '../lib/prisma'
 import { faker } from "@faker-js/faker";
 import { Role,Gender } from "@prisma/client";
+import bcrypt from "bcryptjs";
+
 
 async function main() {
 /*     prisma.cart.deleteMany({
@@ -14,13 +16,13 @@ async function main() {
         where:{NOT:{id:"7db9f93d-873d-4f35-bd11-a0241fadcead"}}
     }) */
 
-
+    const salt = await bcrypt.genSalt(10);
 
     //create admin
     await prisma.user.create({
         data:{
             email:'miguelqui725@gmail.com',
-            password:'123456',
+            password: await bcrypt.hash('123456', salt),
             userName:'perrosaurio725',
             role:Role.ROOT,
             termsAndConditions:true,
@@ -58,7 +60,7 @@ async function main() {
             data: {
                 email: faker.internet.email(),
                 userName:faker.internet.userName().substring(0, 15),
-                password: faker.internet.password().substring(0, 15),
+                password: await bcrypt.hash(faker.internet.password().substring(0, 15),salt),
                 role: faker.helpers.arrayElement([Role.USER, Role.ADMIN,Role.ROOT]),
                 termsAndConditions: true,
                 privacyPolicy: true,

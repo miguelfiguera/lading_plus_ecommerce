@@ -6,11 +6,17 @@ import {
   denied,
 } from "@/routes";
 import { Role } from "@prisma/client";
+import { cookies } from "next/headers";
 
 //middleware done as stablished by https://www.youtube.com/watch?v=wRstTmn0y_c
 
 export default async function middleware(req: NextRequest) {
-  const session = await getToken({ req, secret: process.env.AUTH_SECRET });
+  const envSecret=process.env.AUTH_SECRET
+  const salt= req.cookies.getAll()[1].name
+  console.log(salt)
+  if(!envSecret){throw new Error ("AUTH_SECRET is not defined")}
+
+  const session = await getToken({ req, secret: envSecret,salt:salt });
   const { nextUrl } = req;
   const role: Role | null = (session?.role as Role) || null;
   const isProtected: boolean = protectedRoutes.includes(nextUrl.pathname);

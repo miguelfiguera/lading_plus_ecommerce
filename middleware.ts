@@ -13,7 +13,6 @@ import { cookies } from "next/headers";
 export default async function middleware(req: NextRequest) {
   const envSecret=process.env.AUTH_SECRET
   const salt= req.cookies.getAll()[1].name
-  console.log(salt)
   if(!envSecret){throw new Error ("AUTH_SECRET is not defined")}
 
   const session = await getToken({ req, secret: envSecret,salt:salt });

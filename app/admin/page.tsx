@@ -12,7 +12,7 @@ export default async function page() {
        */}
 
 
-       <div className="container row">
+       <div className="container row my-5 d-flex justify-content-between">
         <div className="col"></div>
         <div className="col"></div>
         <div className="col"></div>

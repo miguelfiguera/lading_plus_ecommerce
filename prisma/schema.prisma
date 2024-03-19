@@ -28,6 +28,7 @@ model User {
   termsAndConditions Boolean   @default(false)
   privacyPolicy      Boolean   @default(false)
   active             Boolean   @default(true)
+  reports            Report[]
   // posts       Post[]
   //comments       Comment[]
 }
@@ -39,7 +40,7 @@ model Profile {
   name        String   @db.VarChar(50)
   lastName    String   @db.VarChar(50)
   phoneNumber String?  @db.VarChar(15)
-  idNumber    String?  
+  idNumber    String?
   age         Int?
   gender      Gender?
   address     String?
@@ -97,6 +98,16 @@ model Bill {
   confirmed     Boolean       @default(false)
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
+}
+
+model Report {
+  id       Int     @id @default(autoincrement())
+  title    String  @db.VarChar(30)
+  body     String
+  solved   Boolean @default(false)
+  user     User    @relation(fields: [userId], references: [id])
+  userId   String  @unique
+  solvedBy String?
 }
 
 //model Post{

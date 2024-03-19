@@ -9,6 +9,7 @@ import { Role } from "@prisma/client";
 import { cookies } from "next/headers";
 
 //middleware done as stablished by https://www.youtube.com/watch?v=wRstTmn0y_c
+//salt as the cookies name for local repository
 
 export default async function middleware(req: NextRequest) {
   const envSecret=process.env.AUTH_SECRET

@@ -42,6 +42,13 @@ export default function AdminNavBar() {
           Users
         </Link>
       </li>
+      <li className="nav-item">
+        <Link className={`nav-link ${active == 4 ? "active" : ""}`} href="/admin/reports"
+                  onClick={() => setActive(4)}
+                  >
+          Reports
+        </Link>
+      </li>
     </ul>
   );
 }

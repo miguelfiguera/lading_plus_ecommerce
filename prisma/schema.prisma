@@ -93,6 +93,7 @@ model Bill {
   coordinates   String?
   paymentMethod PaymentMethod @default(cashUSD)
   paymentData   Json
+  reported      Boolean?
   confirmed     Boolean       @default(false)
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
